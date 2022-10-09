@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "various artist"
+version = "0.1.0"
+description = ""
+authors = ["Aleksey Korolev <laright0@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+ipython = "^8.5.0"
+Django = "^4.1.2"
+gunicorn = "^20.1.0"
+djangorestframework = "^3.14.0"
+django-environ = "^0.9.0"
+drf-yasg = "^1.21.4"
+django-admin-rangefilter = "^0.9.0"
+black = "^22.10.0"
+flake8 = "^5.0.4"
+autoflake = "^1.7.0"
+pre-commit = "^2.20.0"
+yesqa = "^1.4.0"
