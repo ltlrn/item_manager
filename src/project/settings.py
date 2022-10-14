@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "rangefilter",
     # local apps
     "echo",
+    "diseases.apps.DiseasesConfig",
 ]
 
 MIDDLEWARE = [
