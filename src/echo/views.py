@@ -1,5 +1,7 @@
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication, BasicAuthentication
+from rest_framework.authentication import (BasicAuthentication,
+                                           TokenAuthentication)
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -8,6 +10,7 @@ from echo.models import Echo
 
 class EchoView(APIView):
     authentication_classes = [TokenAuthentication, BasicAuthentication]
+    permission_classes = [AllowAny]
 
     def post(self, request, *args, **kwargs):
         if request.user.is_anonymous:
