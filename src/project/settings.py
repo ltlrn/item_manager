@@ -18,9 +18,9 @@ SECRET_KEY = env("SECRET_KEY")
 DEBUG = env("DEBUG")
 
 ALLOWED_HOSTS = [
-    "www.various-artist.ru",
-    "various-artist.ru",
-    "https://various-artist.ru",
+    "www.item-manager.ru",
+    "item-manager.ru",
+    "https://item-manager.ru",
     "localhost",
     "127.0.0.1",
 ]
@@ -74,7 +74,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "project.wsgi.application"
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://various-artist.ru",
+    "https://item-manager.ru",
 ]
 
 # DATABASES = {"default": env.db()}

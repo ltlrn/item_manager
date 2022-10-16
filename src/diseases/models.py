@@ -8,7 +8,10 @@ class Disease(models.Model):
     """Disease model, obviously."""
 
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
         return self.title
@@ -16,42 +19,37 @@ class Disease(models.Model):
 
 class Symptom(models.Model):
     """Single symptom, one of a kind."""
-
-    # SYSTEMS = {
-        # "N": "nervous system",
-        # "E": "endocrine system",
-        # another systems...
-    #}
-
-    # system = models.CharField(max_length=1, choices=SYSTEMS)
-    description = models.TextField
-
-    # class Meta:
-        # ordering = ["system"]
+    
+    title = models.CharField(max_length=200)
+    description = models.TextField(
+        blank=True,
+        null=True,
+    )
 
     def __str__(self):
-        return self.description[:100]
+        return self.title
 
 
-class DiseaseHistory:
+class DiseaseHistory(models.Model):
     """Disease-symptom-person relations."""
 
     patient = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name="diseases",
         verbose_name="Больной",
     )
 
     disease = models.ForeignKey(
-        Disease,
-        on_delete=models.SET_NULL,
-        related_name="diseases",
+        'diseases.Disease',
+        on_delete=models.SET_NULL, # обязательны два следующих аргумента
+        null = True,
+        blank = True,
         verbose_name="Заболевание",
     )
 
     symptom = models.ManyToManyField(
-        Symptom,
+        'diseases.Symptom', # читай про циркулярный импорт!!!
+        verbose_name="Симптом",
     )
 
     first_symtoms = models.DateTimeField(
@@ -60,5 +58,7 @@ class DiseaseHistory:
     )
 
     recovered = models.DateTimeField(
+        null = True,
+        blank = True,
         verbose_name="Окончание болезни",
     )

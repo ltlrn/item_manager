@@ -10,6 +10,7 @@ class EchoView(APIView):
     authentication_classes = [TokenAuthentication, BasicAuthentication]
 
     def post(self, request, *args, **kwargs):
-
+        if request.user.is_anonymous:
+            request.user = None
         Echo.objects.create(data=request.data, user=request.user)
         return Response(request.data, status=status.HTTP_200_OK)
