@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # local apps
     "echo",
     "diseases.apps.DiseasesConfig",
+    "bot_api.apps.BotApiConfig",
 ]
 
 MIDDLEWARE = [

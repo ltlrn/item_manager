@@ -1,0 +1,9 @@
+{% extends 'diseases/base.html' %}
+{% block content%}
+    <form action="" method="POST" novalidate>
+      {% csrf_token %}
+      {{form.as_table}}
+      <button name="submit" class="add">Сохранить</button>
+    </form>
+
+{% endblock %}

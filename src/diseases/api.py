@@ -6,18 +6,19 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from rest_framework.viewsets import ModelViewSet
-from echo.serializers import EchoSerializer
-from echo.models import Echo
 
+from diseases.models import Disease
 
-class EchoView(ModelViewSet):
+from .serializers import DiseaseSerializer
+
+class DiseaseView(ModelViewSet):
     authentication_classes = [TokenAuthentication, BasicAuthentication]
     permission_classes = [AllowAny]
-    queryset = Echo.objects.all().order_by("-created")
-    serializer_class = EchoSerializer
+    queryset = Disease.objects.all()
+    serializer_class = DiseaseSerializer
 
-    def post(self, request, *args, **kwargs):
-        if request.user.is_anonymous:
-            request.user = None
-        Echo.objects.create(data=request.data, user=request.user)
-        return Response(request.data, status=status.HTTP_201_CREATED)
+    # def post(self, request, *args, **kwargs):
+    #     if request.user.is_anonymous:
+    #         request.user = None
+    #     Echo.objects.create(data=request.data, user=request.user)
+    #     return Response(request.data, status=status.HTTP_201_CREATED)

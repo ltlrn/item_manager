@@ -149,3 +149,7 @@ cython_debug/
 backup_db/
 media/
 /media/
+
+# Other
+
+TODO.txt
