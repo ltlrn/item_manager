@@ -5,7 +5,9 @@ env = environ.Env(
     DATABASE_URL=str,
     SECRET_KEY=str,
     DEBUG=(str, False),
+    WEB_HOST=(str, "localhost")
 )
+
 
 environ.Env.read_env()
 
@@ -14,6 +16,8 @@ STATIC_ROOT = BASE_DIR.parent / "static"
 MEDIA_ROOT = BASE_DIR.parent / "media"
 
 SECRET_KEY = env("SECRET_KEY")
+
+USE_X_FORWARDED_HOST = True
 
 DEBUG = env("DEBUG")
 
@@ -120,3 +124,4 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ],
 }
+
